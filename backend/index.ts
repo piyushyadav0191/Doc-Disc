@@ -23,11 +23,7 @@ const chatModel = new ChatOpenAI({ modelName: "gpt-3.5-turbo", openAIApiKey: pro
 const splitter = new RecursiveCharacterTextSplitter();
 
 const app = new Elysia()
-	.use(cors({
-		origin: process.env["FRONTEND_URL"],
-		credentials: true,
-		methods: ["GET", "POST", "DELETE", "OPTIONS", "PUT", "PATCH"],
-	}))
+	.use(cors())
 	.use(
 		rateLimit({
 			max: 10,
