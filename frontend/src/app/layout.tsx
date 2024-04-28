@@ -19,11 +19,11 @@ const inter = Hedvig_Letters_Sans({
 
 export const metadata: Metadata = {
 	title: {
-		default: "Doc Chat",
-		template: "%s | Doc Chat",
+		default: "Doc Disc",
+		template: "%s | Doc Disc",
 	},
 	description: "A chat app to chat with your documents",
-	applicationName: "Doc Chat",
+	applicationName: "Doc Disc",
 	icons: [
 		{
 			rel: "icon",
@@ -33,39 +33,6 @@ export const metadata: Metadata = {
 			url: "/favicon-32x32.png",
 		},
 	],
-	authors: [{ name: "Axole Maranjana", url: "https://axole.online" }],
-	creator: "Axole Maranjana",
-	category: "Chat",
-	keywords: ["chat", "chatgpt", "ai", "axole"],
-	manifest: "/site.manifest.json",
-	metadataBase: new URL("https://docchat.axole.online/"),
-	publisher: "Axole Maranjana",
-	openGraph: {
-		title: "Doc Chat",
-		description: "A chat app to chat with your documents",
-		images: [
-			{
-				url: "/logo.png",
-				alt: "Doc Chat",
-				width: 1200,
-				height: 630,
-			},
-		],
-		countryName: "South Africa",
-		type: "website",
-		siteName: "Doc Chat",
-		url: "https://docchat.axole.online",
-	},
-	generator: "Next.js",
-	formatDetection: {
-		telephone: false,
-	},
-	appleWebApp: {
-		capable: true,
-		statusBarStyle: "default",
-		title: "Doc Chat",
-		// startUpImage: [],
-	},
 };
 
 export const viewport: Viewport = {
