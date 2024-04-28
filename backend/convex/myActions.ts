@@ -10,7 +10,7 @@ dotenv.config()
 
 const embedding = new OpenAIEmbeddings({
 	modelName: "text-embedding-3-large",
-	openAIApiKey: "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",
+	openAIApiKey: process.env.OPENAI_API_KEY,
 });
 
 export const ingest = action({
