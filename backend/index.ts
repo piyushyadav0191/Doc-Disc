@@ -19,7 +19,7 @@ import { createHash } from "node:crypto";
 
 const client = new ConvexHttpClient(process.env["CONVEX_URL"]!);
 
-const chatModel = new ChatOpenAI({ modelName: "gpt-3.5-turbo", openAIApiKey: process.env["OPENAI_API_KEY"]! });
+const chatModel = new ChatOpenAI({ modelName: "gpt-3.5-turbo", openAIApiKey: "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" });
 const splitter = new RecursiveCharacterTextSplitter();
 
 const app = new Elysia()
@@ -386,6 +386,7 @@ app.post(
 		);
 
 		const documentChain = await createStuffDocumentsChain({
+			// @ts-ignore
 			llm: chatModel,
 			prompt,
 		});
@@ -561,7 +562,7 @@ app.post(
 			);
 			return formattedDialogueTurns.join("\n");
 		};
-
+// @ts-ignore
 		const answerChain = RunnableSequence.from([
 			{
 				question: (input: ConversationalRetrievalQAChainInput) =>
