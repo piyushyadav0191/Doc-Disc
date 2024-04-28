@@ -326,8 +326,8 @@ app.get(
 app.onBeforeHandle((request) => {
 	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 	if (
-		request.request.headers.get("origin") !== process.env["ORIGIN"] &&
-		request.request.headers.get("referer") !== process.env["REFERER"]
+		request.request.headers.get("origin") !== process.env["FRONTEND_URL"] &&
+		request.request.headers.get("referer") !== process.env["FRONTEND_URL"]
 	) {
 		return JSON.stringify({
 			message: "Not allowed",
