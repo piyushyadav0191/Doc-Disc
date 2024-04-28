@@ -50,7 +50,8 @@ export default function FilesList() {
 				</div>
 				<ScrollArea className="h-96 w-96 rounded-md">
 					<div className="p-4 pt-0">
-						{files?.map((tag) => (
+								{/* @ts-ignore */}
+						{files?.length > 0 && files?.map((tag) => (
 							<div key={tag._id}>
 								<Separator className="my-2" />
 								<div className="flex items-center justify-between align-middle text-sm">
