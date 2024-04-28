@@ -19,7 +19,7 @@ import { createHash } from "node:crypto";
 
 const client = new ConvexHttpClient(process.env["CONVEX_URL"]!);
 
-const chatModel = new ChatOpenAI({ modelName: "gpt-3.5-turbo", openAIApiKey: "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" });
+const chatModel = new ChatOpenAI({ modelName: "gpt-3.5-turbo", openAIApiKey: process.env["OPENAI_API_KEY"]! });
 const splitter = new RecursiveCharacterTextSplitter();
 
 const app = new Elysia()
@@ -323,19 +323,19 @@ app.get(
 	}
 );
 
-app.onBeforeHandle((request) => {
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	if (
-		request.request.headers.get("origin") !== process.env["ORIGIN"] &&
-		request.request.headers.get("referer") !== process.env["REFERER"]
-	) {
-		return JSON.stringify({
-			message: "Not allowed",
-			status: 403,
-			statusText: "Forbidden",
-		});
-	}
-});
+// app.onBeforeHandle((request) => {
+// 	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+// 	if (
+// 		request.request.headers.get("origin") !== process.env["ORIGIN"] &&
+// 		request.request.headers.get("referer") !== process.env["REFERER"]
+// 	) {
+// 		return JSON.stringify({
+// 			message: "Not allowed",
+// 			status: 403,
+// 			statusText: "Forbidden",
+// 		});
+// 	}
+// });
 
 app.get(
 	"/",
@@ -551,7 +551,7 @@ app.post(
 		const metadata = JSON.parse(matches.resultOne) as MatchesType[];
 
 		const answerTemplate =
-			'You are an useful Assignment assistant, DocChat, adept at offering assignment assistance. Your expertise lies in providing answer on top of provided context. You can leverage the chat history if needed. Answer the question based on the context below. Keep the answer correct, clear, detailed and with examples. Respond "I have no information regarding that, please rephrase your query with relevant key words." if not sure about the answer. When using code examples, use the following format: ```(language) copy (code) ``` ----------------  Chat History: <chat_history> {chat_history} </chat_history> \n <context> {context} </context> \n Question: <question>{question}</question>';
+			'You are an useful Assignment assistant, Doc Disc, adept at offering assignment assistance. Your expertise lies in providing answer on top of provided context. You can leverage the chat history if needed. Answer the question based on the context below. Keep the answer correct, clear, detailed and with examples. Respond "I have no information regarding that, please rephrase your query with relevant key words." if not sure about the answer. When using code examples, use the following format: ```(language) copy (code) ``` ----------------  Chat History: <chat_history> {chat_history} </chat_history> \n <context> {context} </context> \n Question: <question>{question}</question>';
 
 		const ANSWER_PROMPT = PromptTemplate.fromTemplate(answerTemplate);
 
