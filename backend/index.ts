@@ -324,10 +324,12 @@ app.get(
 );
 
 app.onBeforeHandle((request) => {
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+
+	console.log(request)
+
 	if (
-		request.request.headers.get("origin") !== process.env["FRONTEND_URL"] &&
-		request.request.headers.get("referer") !== process.env["FRONTEND_URL"]
+		request.request.headers.get("origin") !== "https://doc-disc.vercel.app" &&
+		request.request.headers.get("referer") !== "https://doc-disc.vercel.app/"
 	) {
 		return JSON.stringify({
 			message: "Not allowed",
