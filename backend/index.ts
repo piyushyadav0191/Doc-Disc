@@ -323,19 +323,19 @@ app.get(
 	}
 );
 
-// app.onBeforeHandle((request) => {
-// 	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-// 	if (
-// 		request.request.headers.get("origin") !== process.env["ORIGIN"] &&
-// 		request.request.headers.get("referer") !== process.env["REFERER"]
-// 	) {
-// 		return JSON.stringify({
-// 			message: "Not allowed",
-// 			status: 403,
-// 			statusText: "Forbidden",
-// 		});
-// 	}
-// });
+app.onBeforeHandle((request) => {
+	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+	if (
+		request.request.headers.get("origin") !== process.env["ORIGIN"] &&
+		request.request.headers.get("referer") !== process.env["REFERER"]
+	) {
+		return JSON.stringify({
+			message: "Not allowed",
+			status: 403,
+			statusText: "Forbidden",
+		});
+	}
+});
 
 app.get(
 	"/",
